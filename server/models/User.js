@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 import bcrypt from "bcrypt";
-import uuid from 'uuid'
+import {v4 as uuidv4} from 'uuid'
 
 const userSchema = new mongoose.Schema({
     login: { type: String, required: true, unique: true },
@@ -10,14 +10,15 @@ const userSchema = new mongoose.Schema({
     last_name: { type: String, required: false },
     phone_number: { type: String, required: true },
     email: { type: String, required: true, unique: true },
-    activation_link: { type: String, required: true },
+    activation_link: { type: String },
     is_verified: { type: Boolean, default: false},
 },{
     timestamps: true
 })
 userSchema.pre('save', async function(next){
-    this.password = await bcrypt.hash(this.password, 3);
-    this.activation_link = uuid.v4()
+    const salt = await bcrypt.genSalt(3);
+    this.password = await bcrypt.hash(this.password, salt);
+    this.activation_link = uuidv4()
     next();
 })
 
