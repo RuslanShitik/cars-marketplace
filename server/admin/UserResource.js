@@ -1,17 +1,15 @@
 import User from "../models/User.js";
+import {userNavigation} from "./navigation.js";
 
 const UserResource = {
     resource: User,
     options: {
-        navigation: {
-            name: 'Users',
-            icon: 'User',
-        },
+        navigation: userNavigation,
 
-        listProperties: ['id', 'login', 'role','first_name', 'last_name', 'phone_number', 'email', 'is_verified', 'createdAt' ,'updatedAt'],
-        filterProperties: ['id', 'login', 'role','first_name', 'last_name', 'phone_number', 'email', 'is_verified', 'createdAt' ,'updatedAt'],
+        listProperties: ['_id', 'login', 'role','first_name', 'last_name', 'phone_number', 'email', 'is_verified', 'createdAt' ,'updatedAt'],
+        filterProperties: ['_id', 'login', 'role','first_name', 'last_name', 'phone_number', 'email', 'is_verified', 'createdAt' ,'updatedAt'],
         editProperties: ['login', 'role', 'first_name', 'last_name', 'phone_number', 'email', 'is_verified'],
-        showProperties: ['id', 'role', 'password', 'login', 'first_name', 'last_name', 'phone_number', 'email', 'is_verified', 'createdAt' ,'updatedAt'],
+        showProperties: ['_id', 'role', 'password', 'login', 'first_name', 'last_name', 'phone_number', 'email', 'is_verified', 'createdAt' ,'updatedAt'],
 
         sort: {
             sortBy: 'updatedAt',
