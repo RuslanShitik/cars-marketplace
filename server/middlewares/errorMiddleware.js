@@ -1,6 +1,6 @@
 import APIException from "../exceptions/apiExceptions.js";
 export default function (err, req, res, next) {
-    console.log(err);
+    console.error('ExceptionMiddleWare: ',err);
 
     if (err instanceof APIException) {
         return res.status(err.status).json({
@@ -9,8 +9,6 @@ export default function (err, req, res, next) {
         });
     }
     else {
-        res.status(500).json({
-            message: 'Internal Server Error...'
-        });
+        res.status(500).json(err);
     }
 }
