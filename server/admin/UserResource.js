@@ -9,7 +9,7 @@ const UserResource = {
         listProperties: ['_id', 'login', 'role','first_name', 'last_name', 'phone_number', 'email', 'is_verified', 'createdAt' ,'updatedAt'],
         filterProperties: ['_id', 'login', 'role','first_name', 'last_name', 'phone_number', 'email', 'is_verified', 'createdAt' ,'updatedAt'],
         editProperties: ['login', 'role', 'first_name', 'last_name', 'phone_number', 'email', 'is_verified'],
-        showProperties: ['_id', 'role', 'password', 'login', 'first_name', 'last_name', 'phone_number', 'email', 'is_verified', 'createdAt' ,'updatedAt'],
+        showProperties: ['_id', 'role', 'password', 'login', 'first_name', 'last_name', 'phone_number', 'email', 'activation_link', 'is_verified', 'createdAt' ,'updatedAt'],
 
         sort: {
             sortBy: 'updatedAt',
@@ -22,7 +22,7 @@ const UserResource = {
                 isVisible: false,
             },
             edit: {
-                isAccessible: false,
+                isAccessible: true,
                 isVisible: true,
             },
             delete: {

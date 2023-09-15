@@ -2,6 +2,8 @@ import User from "../models/User.js";
 import TokenService from "./TokenService.js";
 import {UserDto} from "../dtos/UserDto.js";
 import APIException from "../exceptions/apiExceptions.js";
+import bcrypt from "bcrypt";
+import {isRole} from "../helpers/role.js";
 
 class UserService {
     async login() {
@@ -29,6 +31,17 @@ class UserService {
             accessToken,
             user: userDto
         }
+    }
+    async adminAuthenticate (email, password) {
+        const userByEmail = await User.findOne({email})
+        if (!userByEmail){
+            return null
+        }
+        const isValidPassword = await bcrypt.compare(password, userByEmail.password)
+        if (userByEmail && isValidPassword && isRole(['ADMIN', 'SUPER_USER'], userByEmail.role)) {
+            return Promise.resolve(userByEmail)
+        }
+        return null
     }
     async create() {
 

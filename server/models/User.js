@@ -1,11 +1,12 @@
 import mongoose from "mongoose";
 import bcrypt from "bcrypt";
 import {v4 as uuidv4} from 'uuid'
+import {roles} from "../helpers/role.js";
 
 const userSchema = new mongoose.Schema({
     login: { type: String, required: true, unique: true },
     password: { type: String, required: true },
-    role: { type: String, enum: ['USER', 'ADMIN', 'SUPER_USER'], default: 'USER' },
+    role: { type: String, enum: roles, default: 'USER' },
     first_name: { type: String, required: true },
     last_name: { type: String, required: false },
     phone_number: { type: String, required: true },
