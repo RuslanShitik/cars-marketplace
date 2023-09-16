@@ -1,5 +1,5 @@
-import Transmission from "../models/Transmission.js";
-class TransmissionController {
+import Transmission from "../models/TransmissionType.js";
+class TransmissionTypeController {
     async create(req, res, next) {
         try {
             console.log('req.body: ',req.body)
@@ -13,4 +13,4 @@ class TransmissionController {
     }
 }
 
-export default new TransmissionController
+export default new TransmissionTypeController

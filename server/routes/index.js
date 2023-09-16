@@ -1,10 +1,10 @@
 import {Router} from "express";
 import userRouter from "./userRouter.js";
-import transmissionRouter from "./transmissionRouter.js";
+import transmissionTypeRouter from "./transmissionTypeRouter.js";
 
 const router = new Router();
 
 router.use('/user', userRouter)
-router.use('/transmission', transmissionRouter)
+router.use('/transmission', transmissionTypeRouter)
 
 export default router

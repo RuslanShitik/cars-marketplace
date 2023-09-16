@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const transmissionSchema = new mongoose.Schema({
+const DrivingTypeSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true,
@@ -10,4 +10,4 @@ const transmissionSchema = new mongoose.Schema({
     timestamps: true
 })
 
-export default mongoose.model('Transmission', transmissionSchema)
+export default mongoose.model('DrivingType', DrivingTypeSchema)

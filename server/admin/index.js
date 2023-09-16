@@ -3,16 +3,30 @@ import AdminJSExpress from '@adminjs/express';
 import * as AdminJSMongoose from '@adminjs/mongoose';
 
 import UserResource from "./UserResource.js";
-import TransmissionResource from "./TransmissionResource.js";
 import MarkResource from "./MarkResource.js";
 import ModelResource from "./ModelResource.js";
 import UserService from "../services/UserService.js";
+import GenerationResource from "./GenerationResource.js";
+import {
+    AdvertiseResource,
+    ColorResource,
+    DrivingTypeResource,
+    BodyTypeResource,
+    FuelTypeResource,
+    TransmissionTypeResource
+} from "./AdvertiseResource.js";
 
 const resources = [
     UserResource,
-    TransmissionResource,
     MarkResource,
     ModelResource,
+    GenerationResource,
+    AdvertiseResource,
+    ColorResource,
+    DrivingTypeResource,
+    BodyTypeResource,
+    FuelTypeResource,
+    TransmissionTypeResource
 ]
 
 AdminJS.registerAdapter({

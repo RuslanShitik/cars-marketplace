@@ -1,17 +1,17 @@
 import mongoose from "mongoose";
 
-const modelSchema = new mongoose.Schema({
+const generationSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true,
     },
-    mark: {
+    model: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Mark',
+        ref: 'Model',
         required: true,
     }
 },{
     timestamps: true
 })
 
-export default mongoose.model('Model', modelSchema)
+export default mongoose.model('Generation', generationSchema)
