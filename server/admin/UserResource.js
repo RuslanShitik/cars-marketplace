@@ -1,5 +1,6 @@
 import User from "../models/User.js";
 import {userNavigation} from "./navigation.js";
+import {isRole} from "../helpers/role.js";
 
 const UserResource = {
     resource: User,
@@ -22,8 +23,8 @@ const UserResource = {
                 isVisible: false,
             },
             edit: {
-                isAccessible: true,
-                isVisible: true,
+                isAccessible: ({currentAdmin}) => isRole(['SUPER_USER'],currentAdmin.role),
+                isVisible: ({currentAdmin}) => isRole(['SUPER_USER'],currentAdmin.role),
             },
             delete: {
                 isAccessible: false,
