@@ -1,11 +1,20 @@
-import Transmission from "../models/TransmissionType.js";
+import TransmissionTypeService from "../services/TransmissionTypeService.js";
+import TransmissionType from "../models/TransmissionType.js";
 class TransmissionTypeController {
     async create(req, res, next) {
         try {
-            console.log('req.body: ',req.body)
-            const newTransmission = await Transmission.create(req.body)
-            console.log('newTransmission: ',newTransmission)
+            const { name } = req.body
+            const newTransmission = await TransmissionTypeService.create(name)
             res.json(newTransmission)
+        }
+        catch (e) {
+            next(e)
+        }
+    }
+    async getAll(req, res, next) {
+        try {
+            const transmissions = await TransmissionTypeService.getAll(req.query)
+            res.json(transmissions)
         }
         catch (e){
             next(e)

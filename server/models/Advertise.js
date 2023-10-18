@@ -77,10 +77,6 @@ const advertiseSchema = new mongoose.Schema({
     timestamps: true
 });
 
-advertiseSchema.pre('findOne', function(next) {
-    this.viewsCount++;
-    next();
-});
-
 export default new mongoose.model('Advertise', advertiseSchema)
 //todo: admin panel feat
+//todo: good services and api and validation and
