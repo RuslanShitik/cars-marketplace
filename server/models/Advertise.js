@@ -1,5 +1,4 @@
 import mongoose from "mongoose";
-import {flat} from "adminjs";
 
 const advertiseSchema = new mongoose.Schema({
     generation: {

@@ -1,5 +1,5 @@
 import TransmissionTypeService from "../services/TransmissionTypeService.js";
-import TransmissionType from "../models/TransmissionType.js";
+
 class TransmissionTypeController {
     async create(req, res, next) {
         try {
