@@ -5,11 +5,13 @@ class AdvertiseController {
     async getAll(req, res, next) {
         try {
             const advertises = await AdvertiseService.getAll({
-                ...req.query, 
-                isActual: { $eq: true }, 
-                isModerated: { $eq: true }
+                where: {
+                    ...req.query,
+                    isActual: true, 
+                    isModerated: true
+                }
             })
-            const advertisesDTO = advertises.data.map((advertise) => new AdvertiseListSimpleDTO(advertise));
+            const advertisesDTO = advertises.data.map((advertise) => new AdvertiseListSimpleDTO(advertise.dataValues));
             res.json({meta: advertises.meta, advertises: advertisesDTO})
         }
         catch (e) {

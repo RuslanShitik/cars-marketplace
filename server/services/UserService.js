@@ -1,4 +1,4 @@
-import User from "../models/User.js";
+import { User } from "../models/index.js";
 import TokenService from "./TokenService.js";
 import {UserDto} from "../dtos/UserDto.js";
 import APIException from "../exceptions/apiExceptions.js";
@@ -12,6 +12,7 @@ class UserService {
     async verify() {
 
     }
+    // переписать (обработка ошибок будет от ОРМ)
     async registration(email, login, password, phone_number, first_name) {
         const userByEmail = await User.findOne({email})
         if (userByEmail) {
@@ -43,19 +44,7 @@ class UserService {
         }
         return null
     }
-    async create() {
-
-    }
-    async getById() {
-
-    }
-    async getAll() {
-
-    }
     async update() {
-
-    }
-    async delete() {
 
     }
 }

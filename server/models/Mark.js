@@ -1,13 +1,13 @@
-import mongoose from "mongoose";
+import sequelize from "../sequelize.js";
+import DataTypes from 'sequelize'
 
-const markSchema = new mongoose.Schema({
+const Mark = sequelize.define('Mark',{
     name: {
-        type: String,
-        required: true,
+        type: DataTypes.STRING,
+        allowNull: false,
         unique: true,
     }
-},{
-    timestamps: true
-})
+},{timestamps: true})
 
-export default mongoose.model('Mark', markSchema)
+
+export default Mark

@@ -1,9 +1,9 @@
 import {carsNavigation} from "./navigation.js";
-import Advertise from "../models/Advertise.js";
-import Color from "../models/Color.js";
-import DrivingType from "../models/DrivingType.js";
-import BodyType from "../models/BodyType.js";
-import FuelType from "../models/FuelType.js";
+import { Advertise } from "../models/index.js";
+import { Color } from "../models/index.js";
+import { DrivingType } from "../models/index.js";
+import { BodyType } from "../models/index.js";
+import { FuelType } from "../models/index.js";
 import Transmission from "../models/TransmissionType.js";
 
 const AdvertiseResource = {

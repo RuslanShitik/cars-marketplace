@@ -1,13 +1,12 @@
-import mongoose from "mongoose";
+import sequelize from "../sequelize.js";
+import DataTypes from 'sequelize'
 
-const transmissionSchema = new mongoose.Schema({
+const TransmissionType = sequelize.define('TransmissionType',{
     name: {
-        type: String,
-        required: true,
+        type: DataTypes.STRING,
+        allowNull: false,
         unique: true,
     }
-},{
-    timestamps: true
-})
+},{timestamps: true})
 
-export default mongoose.model('TransmissionType', transmissionSchema)
+export default TransmissionType

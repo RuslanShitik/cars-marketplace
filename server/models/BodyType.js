@@ -1,13 +1,12 @@
-import mongoose from "mongoose";
+import sequelize from "../sequelize.js";
+import DataTypes from 'sequelize'
 
-const BodyTypeSchema = new mongoose.Schema({
+const BodyType = sequelize.define('BodyType',{
     name: {
-        type: String,
-        required: true,
+        type: DataTypes.STRING,
+        allowNull: false,
         unique: true,
     }
-},{
-    timestamps: true
-})
+},{timestamps: true})
 
-export default mongoose.model('BodyType', BodyTypeSchema)
+export default BodyType

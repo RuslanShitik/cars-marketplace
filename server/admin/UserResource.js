@@ -1,4 +1,4 @@
-import User from "../models/User.js";
+import { User } from "../models/index.js";
 import {userNavigation} from "./navigation.js";
 import {isRole} from "../helpers/role.js";
 

@@ -5,7 +5,7 @@ class TransmissionTypeController {
         try {
             const { name } = req.body
             const newTransmission = await TransmissionTypeService.create(name)
-            res.json(newTransmission)
+            res.status(201).json(newTransmission)
         }
         catch (e) {
             next(e)

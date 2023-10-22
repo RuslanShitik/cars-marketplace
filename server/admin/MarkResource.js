@@ -1,7 +1,6 @@
-import Mark from "../models/Mark.js";
+import { Mark } from "../models/index.js";
 import {carsNavigation} from "./navigation.js";
 
-console.log('carsNavigation: ',carsNavigation)
 const MarkResource = {
     resource: Mark,
     options: {

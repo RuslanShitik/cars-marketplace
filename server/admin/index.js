@@ -1,6 +1,6 @@
 import AdminJS from 'adminjs';
 import AdminJSExpress from '@adminjs/express';
-import * as AdminJSMongoose from '@adminjs/mongoose';
+import * as AdminJSSequelize from '@adminjs/sequelize'
 
 import UserResource from "./UserResource.js";
 import MarkResource from "./MarkResource.js";
@@ -30,9 +30,9 @@ const resources = [
 ]
 
 AdminJS.registerAdapter({
-    Resource: AdminJSMongoose.Resource,
-    Database: AdminJSMongoose.Database,
-});
+    Resource: AdminJSSequelize.Resource,
+    Database: AdminJSSequelize.Database,
+})
 
 const admin = new AdminJS({ resources });
 

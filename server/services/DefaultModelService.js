@@ -1,28 +1,23 @@
+import { query } from "express";
+
 class DefaultModelService {
     limit = 10;
     page = 1;
     
-    async getAll(query = {}, model, populateFields = null ){
-        const perPage = query?.limit || this.limit
-        const page = query?.page || this.page
+    async getAll(queryRaw = {}, model){
+        const limit = Number(queryRaw?.limit || this.limit)
+        const offset = ((queryRaw?.page || this.page) - 1) * limit;
+        const query = {...queryRaw, limit, offset}
 
-        delete query.limit
-        delete query.page
-
-        const total = await model.count(query);
-        const data = await model
-            .find(query)
-            .populate(populateFields)
-            .limit(perPage)
-            .skip(perPage * (page-1))
+        const { count, rows } = await model.findAndCountAll(query)
             
         return {
             meta: {
-                page,
-                perPage,
-                total
+                page: (offset/limit) + 1,
+                perPage: limit,
+                total: count
             },
-            data
+            data: rows
         }
     }
 }

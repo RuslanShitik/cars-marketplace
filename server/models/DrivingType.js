@@ -1,13 +1,12 @@
-import mongoose from "mongoose";
+import sequelize from "../sequelize.js";
+import DataTypes from 'sequelize'
 
-const DrivingTypeSchema = new mongoose.Schema({
+const DrivingType = sequelize.define('DrivingType',{
     name: {
-        type: String,
-        required: true,
+        type: DataTypes.STRING,
+        allowNull: false,
         unique: true,
     }
-},{
-    timestamps: true
-})
+},{timestamps: true})
 
-export default mongoose.model('DrivingType', DrivingTypeSchema)
+export default DrivingType

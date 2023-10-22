@@ -1,81 +1,42 @@
-import mongoose from "mongoose";
+import sequelize from "../sequelize.js";
+import DataTypes from 'sequelize'
 
-const advertiseSchema = new mongoose.Schema({
-    generation: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Generation',
-        required: true
-    },
+const Advertise = sequelize.define('Advertise',{
     price: {
-        type: Number,
-        required: true,
+        type: DataTypes.FLOAT,
+        allowNull: false,
     },
     year: {
-        type: Number,
-        required: true,
-    },
-    transmission: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'TransmissionType',
-        required: true
+        type: DataTypes.INTEGER,
+        allowNull: false,
     },
     capacity: {
-        type: Number,
-        required: false,
-    },
-    fuel: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'FuelType',
-        required: true
+        type: DataTypes.FLOAT,
     },
     mileage: {
-        type: Number,
-        required: true
-    },
-    body: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'BodyType',
-        required: true
-    },
-    driving: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'DrivingType',
-        required: true
-    },
-    color: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Color',
-        required: true
+        type: DataTypes.INTEGER,
+        allowNull: false,
     },
     vin: {
-        type: String,
-        required: false
+        type: DataTypes.STRING,
     },
     description: {
-        type: String,
-        required: false
+        type: DataTypes.TEXT,
     },
     viewsCount: {
-        type: Number,
-        default: 0,
+        type: DataTypes.INTEGER,
+        defaultValue: 0,
     },
     isActual: {
-        type: Boolean,
-        default: true,
+        type: DataTypes.BOOLEAN,
+        defaultValue: true,
     },
     isModerated: {
-        type: Boolean,
-        default: true,
+        type: DataTypes.BOOLEAN,
+        defaultValue: true,
     },
-    user: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User',
-        required: true
-    },
-},{
-    timestamps: true
-});
+},{timestamps: true})
 
-export default new mongoose.model('Advertise', advertiseSchema)
+export default Advertise
 //todo: admin panel feat
 //todo: good services and api and validation and

@@ -1,4 +1,4 @@
-import Model from "../models/Model.js";
+import { Model } from "../models/index.js";
 import {carsNavigation} from "./navigation.js";
 
 

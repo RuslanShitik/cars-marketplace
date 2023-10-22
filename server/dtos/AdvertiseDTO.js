@@ -1,14 +1,16 @@
+import e from "express";
+
 class AdvertiseDTO {
     constructor(data) {
-        this._id = data._id;
+        this.id = data.id;
         this.generation = {
-            _id: data.generation._id,
+            id: data.generation.id,
             name: data.generation.name,
             model: {
-                _id: data.generation.model?._id,
-                name: data.generation.model?._id,
+                id: data.generation.model?.id,
+                name: data.generation.model?.id,
                 mark: {
-                    _id: data.generation.model?.mark._id,
+                    id: data.generation.model?.mark.id,
                     name: data.generation.model?.mark.name,
                 }
             },
@@ -16,25 +18,25 @@ class AdvertiseDTO {
         this.price = data.price;
         this.year = data.year;
         this.transmission = {
-            _id: data.transmission._id,
+            id: data.transmission.id,
             name: data.transmission.name,
         };
         this.capacity = data.capacity;
         this.fuel = {
-            _id: data.fuel._id,
+            id: data.fuel.id,
             name: data.fuel.name,
         };
         this.mileage = data.mileage;
         this.body = {
-            _id: data.body._id,
+            id: data.body.id,
             name: data.body.name,
         };
         this.driving = {
-            _id: data.driving._id,
+            id: data.driving.id,
             name: data.driving.name,
         };
         this.color = {
-            _id: data.color._id,
+            id: data.color.id,
             name: data.color.name,
         };
         this.vin = data.vin;
@@ -43,7 +45,7 @@ class AdvertiseDTO {
         this.isActual = data.isActual;
         this.isModerated = data.isModerated;
         this.user = {
-            _id: data.user._id,
+            id: data.user.id,
             first_name: data.user.first_name,
             phone_number: data.user.phone_number,
             email: data.user.email,
@@ -53,42 +55,42 @@ class AdvertiseDTO {
 
 class AdvertiseListSimpleDTO {
     constructor(data) {
-        this._id = data._id;
+        this.id = data.id;
         this.generation = {
-            _id: data.generation._id,
-            name: data.generation.name,
+            id: data.Generation.id,
+            name: data.Generation.name,
             model: {
-                _id: data.generation.model?._id,
-                name: data.generation.model?._id,
+                id: data.Generation.Model?.id,
+                name: data.Generation.Model?.id,
                 mark: {
-                    _id: data.generation.model?.mark._id,
-                    name: data.generation.model?.mark.name,
+                    id: data.Generation.Model?.Mark.id,
+                    name: data.Generation.Model?.Mark.name,
                 }
             },
         };
         this.price = data.price;
         this.year = data.year;
         this.transmission = {
-            _id: data.transmission._id,
-            name: data.transmission.name,
+            id: data.TransmissionType.id,
+            name: data.TransmissionType.name,
         };
         this.capacity = data.capacity;
         this.fuel = {
-            _id: data.fuel._id,
-            name: data.fuel.name,
+            id: data.FuelType.id,
+            name: data.FuelType.name,
         };
         this.mileage = data.mileage;
         this.body = {
-            _id: data.body._id,
-            name: data.body.name,
+            id: data.BodyType.id,
+            name: data.BodyType.name,
         };
         this.driving = {
-            _id: data.driving._id,
-            name: data.driving.name,
+            id: data.DrivingType.id,
+            name: data.DrivingType.name,
         };
         this.color = {
-            _id: data.color._id,
-            name: data.color.name,
+            id: data.Color.id,
+            name: data.Color.name,
         };
         this.isActual = data.isActual;
         this.isModerated = data.isModerated;

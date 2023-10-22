@@ -1,17 +1,16 @@
-import mongoose from "mongoose";
+import sequelize from "../sequelize.js";
+import DataTypes from 'sequelize'
 
-const modelSchema = new mongoose.Schema({
+const Model = sequelize.define('Model',{
     name: {
-        type: String,
-        required: true,
+        type: DataTypes.STRING,
+        allowNull: false,
+        unique: true,
     },
-    mark: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Mark',
-        required: true,
+    markId: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
     }
-},{
-    timestamps: true
-})
+},{timestamps: true})
 
-export default mongoose.model('Model', modelSchema)
+export default Model

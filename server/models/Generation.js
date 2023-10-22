@@ -1,17 +1,16 @@
-import mongoose from "mongoose";
+import sequelize from "../sequelize.js";
+import DataTypes from 'sequelize'
 
-const generationSchema = new mongoose.Schema({
+const Generation = sequelize.define('Generation',{
     name: {
-        type: String,
-        required: true,
+        type: DataTypes.STRING,
+        allowNull: false,
+        unique: true,
     },
-    model: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Model',
-        required: true,
+    modelId: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
     }
-},{
-    timestamps: true
-})
+},{timestamps: true})
 
-export default mongoose.model('Generation', generationSchema)
+export default Generation
