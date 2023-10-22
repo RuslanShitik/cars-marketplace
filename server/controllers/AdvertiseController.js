@@ -20,4 +20,4 @@ class AdvertiseController {
     }
 }
 
-export default new AdvertiseController;//todo: create tests
+export default new AdvertiseController;
