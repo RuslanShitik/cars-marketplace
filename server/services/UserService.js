@@ -14,12 +14,12 @@ class UserService {
     }
     // переписать (обработка ошибок будет от ОРМ)
     async registration(email, login, password, phone_number, first_name) {
-        const userByEmail = await User.findOne({email})
+        const userByEmail = await User.findOne({where: {email}})
         if (userByEmail) {
             throw APIException.badRequest(`User with email '${email}' is exist`)
         }
         
-        const userByLogin = await User.findOne({login})
+        const userByLogin = await User.findOne({where: {login}})
         if (userByLogin) {
             throw APIException.badRequest(`User with login '${login}' is exist`)
         }

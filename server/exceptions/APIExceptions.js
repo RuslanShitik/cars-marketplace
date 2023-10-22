@@ -25,7 +25,7 @@ class APIException extends Error {
         return new APIException(404, message);
     }
 
-    static forbidden (message) {
+    static forbidden (message = 'Forbidden!') {
         return new APIException(403, message);
     }
 }
