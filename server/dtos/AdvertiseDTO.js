@@ -5,11 +5,11 @@ class AdvertiseDTO {
             _id: data.generation._id,
             name: data.generation.name,
             model: {
-                _id: data.generation.model._id,
-                name: data.generation.model._id,
+                _id: data.generation.model?._id,
+                name: data.generation.model?._id,
                 mark: {
-                    _id: data.generation.model.mark._id,
-                    name: data.generation.model.mark.name,
+                    _id: data.generation.model?.mark._id,
+                    name: data.generation.model?.mark.name,
                 }
             },
         };
@@ -58,11 +58,11 @@ class AdvertiseListSimpleDTO {
             _id: data.generation._id,
             name: data.generation.name,
             model: {
-                _id: data.generation.model._id,
-                name: data.generation.model._id,
+                _id: data.generation.model?._id,
+                name: data.generation.model?._id,
                 mark: {
-                    _id: data.generation.model.mark._id,
-                    name: data.generation.model.mark.name,
+                    _id: data.generation.model?.mark._id,
+                    name: data.generation.model?.mark.name,
                 }
             },
         };
