@@ -7,6 +7,20 @@ class AdvertiseService extends DefaultModelService {
             include: [{ all: true, nested: true}]
         }, Advertise);
     }
+    async create(
+        price, year, capacity, mileage, vin,
+        description, generationId,
+        transmissionId, fuelId, bodyId,
+        drivingId, colorId, userId, 
+        ) {
+        const createdAdvertise = await Advertise.create({
+            price, year, capacity, mileage, 
+            vin, description, generationId,
+            transmissionId, fuelId, bodyId,
+            drivingId, colorId, userId, 
+        });
+        return createdAdvertise;
+    }
 }
 
 export default new AdvertiseService;

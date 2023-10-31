@@ -10,8 +10,8 @@ async function startApp() {
     console.log('starting...')
     try {
         await sequelize.authenticate();
-        console.log('Connection to POSTGRES has been established successfully.')
-
+        console.log('Connection to POSTGRES has been established successfully.');
+        
 
         app.use(admin.options.rootPath, adminRouter)
 

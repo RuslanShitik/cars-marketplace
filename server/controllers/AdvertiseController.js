@@ -18,6 +18,29 @@ class AdvertiseController {
             next(e);
         }
     }
+
+    async create(req, res, next) {
+        try {
+            const {
+                price, year, capacity, mileage, 
+                vin, description, generationId,
+                transmissionId, fuelId, bodyId,
+                drivingId, colorId,
+            } = req.body;
+            const { userId } = req.user;
+
+            const createdAdvertise = await AdvertiseService.create(
+                price, year, capacity, mileage, 
+                vin, description, generationId,
+                transmissionId, fuelId, bodyId,
+                drivingId, colorId, userId, 
+            )
+            res.status(201).json({id: createdAdvertise.id})
+        }
+        catch (e) {
+            next(e);
+        }
+    }
 }
 
 export default new AdvertiseController;

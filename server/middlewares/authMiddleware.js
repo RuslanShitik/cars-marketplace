@@ -13,7 +13,6 @@ export default function(req, res, next) {
             return next(APIException.unauthorized())
         }
         req.user = userData;
-        console.log('---req.user---\n',req.user)
         next()
     }
     catch (e){

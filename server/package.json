@@ -5,8 +5,10 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "nodemon index.js",
-    "test": "jest --detectOpenHandles"
+    "start": "node index.js",
+    "test": "jest --=detectOpenHandles",
+    "dev": "nodemon index.js --ignore __tests__/*",
+    "db-sync": "node databaseSync.js"
   },
   "keywords": [],
   "author": "",
