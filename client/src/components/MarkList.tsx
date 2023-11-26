@@ -1,46 +1,45 @@
 import React, {FC} from "react";
-import { getAdvertises } from "../services/advertise.service";
-import { IAdvertise, IMark } from "../types/adverise";
+import { getMarks } from "../services/advertise.service";
+import { IMark } from "../types/adverise";
 import Loading from "../components/Loading";
-import { AdvertiseListElement } from "./AdvertiseListElement";
+import { Link, useLocation  } from "react-router-dom";
 
 export const MarkList: FC = () => {
 
-    const [mark, setMark] = React.useState<IMark[]>([])
+    const [marks, setMarks] = React.useState<IMark[]>([])
     const [isLoading, setIsLoading] = React.useState<boolean>(false)
     const [isError, setIsError] = React.useState<boolean>(false)
     
-    // const fetchAdvertiseList = async () => {
-    //     setIsLoading(true)
-    //     try {
-    //         const response = await getAdvertises();
-    //         setAdvertises(response.data.advertises)
-    //     }
-    //     catch {
-    //         setIsError(true)
-    //     }
-    //     finally {
-    //         setIsLoading(false)
-    //     }
-    // }
-    // React.useEffect(() => {
-    //     fetchAdvertiseList()
-    // }, [])
+    const fetchMarkList = async () => {
+        setIsLoading(true)
+        try {
+            const response = await getMarks();
+            setMarks(response.data.marks)
+        }
+        catch {
+            setIsError(true)
+        }
+        finally {
+            setIsLoading(false)
+        }
+    }
+    React.useEffect(() => {
+        fetchMarkList()
+    }, [])
 
     return (
-        <div className="bg-white p-3 rounded-md drop-shadow-md">
-            {/* {isLoading && <Loading />}
-            {isError ? <p>Error!!!</p> : (
-                !isLoading && advertises.length ? (
-                    <div className="columns-1">
-                        {advertises.map((advertise) => (
-                            <AdvertiseListElement advertise={advertise}/>
+        <div className="bg-white p-3 rounded-md drop-shadow-md mb-6">
+            {
+                isLoading       ? <Loading /> : 
+                isError         ? <p>Error!!!</p> :
+                !marks.length   ? <p>no data</p> : (
+                    <div className="columns-2">
+                        {marks.map((mark) => (
+                           <div key={mark.id}><Link className="text-blue-500" to={`cars/${mark.name}`}>{mark.name}</Link></div>
                         ))}
                     </div>
-                ) : (
-                    <p>no data</p>
                 )
-            )} */}
+            }
         </div>
     )
 }

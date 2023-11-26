@@ -61,7 +61,7 @@ class AdvertiseListSimpleDTO {
             name: data.Generation.name,
             model: {
                 id: data.Generation.Model?.id,
-                name: data.Generation.Model?.id,
+                name: data.Generation.Model?.name,
                 mark: {
                     id: data.Generation.Model?.Mark.id,
                     name: data.Generation.Model?.Mark.name,
@@ -92,8 +92,6 @@ class AdvertiseListSimpleDTO {
             id: data.Color.id,
             name: data.Color.name,
         };
-        this.isActual = data.isActual;
-        this.isModerated = data.isModerated;
     }
 }
 

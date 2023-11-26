@@ -1,10 +1,10 @@
 import {Router} from "express";
-import TransmissionController from "../controllers/TransmissionTypeController.js";
+import TransmissionTypeController from "../controllers/TransmissionTypeController.js";
 import authMiddleware from "../middlewares/authMiddleware.js";
 
 const transmissionTypeRouter = new Router()
 
-transmissionTypeRouter.post('/', authMiddleware, TransmissionController.create) //todo: add validation
-transmissionTypeRouter.get('/', TransmissionController.getAll)// todo: add express-rate-limit
+transmissionTypeRouter.post('/', authMiddleware, TransmissionTypeController.create) //todo: add validation
+transmissionTypeRouter.get('/', TransmissionTypeController.getAll)// todo: add express-rate-limit
 
 export default transmissionTypeRouter

@@ -4,7 +4,11 @@ import { IAdvertise } from "../types/adverise";
 import Loading from "../components/Loading";
 import { AdvertiseListElement } from "./AdvertiseListElement";
 
-export const AdvertiseList: FC = () => {
+interface IAdvertiseListProps {
+    searchQuery?: object
+}
+
+export const AdvertiseList: FC<IAdvertiseListProps> = ({searchQuery = null}) => {
 
     const [advertises, setAdvertises] = React.useState<IAdvertise[]>([])
     const [isLoading, setIsLoading] = React.useState<boolean>(false)
@@ -13,7 +17,7 @@ export const AdvertiseList: FC = () => {
     const fetchAdvertiseList = async () => {
         setIsLoading(true)
         try {
-            const response = await getAdvertises();
+            const response = await getAdvertises(searchQuery);
             setAdvertises(response.data.advertises)
         }
         catch {
@@ -34,7 +38,7 @@ export const AdvertiseList: FC = () => {
                 !isLoading && advertises.length ? (
                     <div className="columns-1">
                         {advertises.map((advertise) => (
-                            <AdvertiseListElement advertise={advertise}/>
+                            <AdvertiseListElement key={advertise.id} advertise={advertise}/>
                         ))}
                     </div>
                 ) : (

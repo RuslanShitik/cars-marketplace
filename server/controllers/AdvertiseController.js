@@ -4,13 +4,26 @@ import AdvertiseService from "../services/AdvertiseService.js";
 class AdvertiseController {
     async getAll(req, res, next) {
         try {
-            const advertises = await AdvertiseService.getAll({
-                where: {
-                    ...req.query,
-                    isActual: true, 
-                    isModerated: true
-                }
-            })
+            const { mark, model, generation } = req.query;
+            const filter = {
+                isActual: true,
+                isModerated: true,
+            };
+
+            if (mark) {
+                filter['Generation.model.mark.name'] = mark;
+            }
+
+            if (model) {
+                filter['Generations.Models.name'] = model;
+            }
+
+            if (generation) {
+                filter['generation.name'] = generation;
+            }
+
+            const advertises = await AdvertiseService.getAll({ where: filter });
+
             const advertisesDTO = advertises.data.map((advertise) => new AdvertiseListSimpleDTO(advertise.dataValues));
             res.json({meta: advertises.meta, advertises: advertisesDTO})
         }

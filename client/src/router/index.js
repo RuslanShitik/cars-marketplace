@@ -13,9 +13,9 @@ const router = createBrowserRouter([
               element: <AdvertiseByMarkPage />,
             },
             {
-                path: "",
-                element: <HomePage/>,
-              },
+              path: "",
+              element: <HomePage/>,
+            },
           ],
     },
 ]);
